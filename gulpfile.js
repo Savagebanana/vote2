@@ -37,7 +37,7 @@ gulp.task('browserify', function() {
 })
 
 gulp.task('copy', ['browserify','sass'], function() {
-    gulp.src(['./src/**/*.html','./src/**/*.css'])
+    gulp.src(['./src/**/*.html','./src/**/*.css','./src/**/*.json'])
       .pipe(gulp.dest('./public'))
 	.pipe(browserSync.stream())
 });

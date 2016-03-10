@@ -4,11 +4,13 @@ require('angular-aria');
 require('angular-animate');
 require('angular-material');
 require('angular-ui-bootstrap');
+require('./components/home/home-service.js');
 require('./components/home/home.js');
 require('./components/about/about.js');
 
 
-var app = angular.module('myApp', ['ui.router','ngMaterial','myAppHome','myAppAbout'])
+
+var app = angular.module('myApp', ['ui.router','ui.bootstrap','ngMaterial','myAppHome','myAppAbout','myHomeService'])
 
 app.config(function($stateProvider, $urlRouterProvider) {
 

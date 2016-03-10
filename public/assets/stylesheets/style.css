@@ -1,2 +1,28 @@
 body h1 {
   color: #d06; }
+
+body .container {
+  width: 100%;
+  padding: 0; }
+
+md-sidenav {
+  background-color: #3f51b5; }
+  md-sidenav h2 {
+    padding: 0.5em;
+    color: #afafaf; }
+
+md-toolbar h3 {
+  margin: auto;
+  font-weight: 500; }
+
+md-list-item {
+  background-color: rgba(63, 81, 181, 0.7);
+  margin: 0.3em 0; }
+  md-list-item span {
+    color: white; }
+
+.lightblue {
+  background-color: lightblue; }
+
+.lightgreen {
+  background-color: lightgreen; }

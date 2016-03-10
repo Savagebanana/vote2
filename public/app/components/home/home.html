@@ -1,11 +1,36 @@
-<div ui-view='header'></div>
-<div ng-controller="homeCtrl as home">
-	<uib-accordion>
-		<uib-accordion-group heading="First Heading">
-			This is some content for the second heading
-		</uib-accordion-group>
-		<uib-accordion-group heading="Second Heading">
-			This is some content for the second heading
-		</uib-accordion-group>
-	<uib-accordion>
+<div ui-view='header' class="md- md-whiteframe-8dp"></div>
+<div ng-controller="homeCtrl as home" class="container" layout="row" flex>
+	<md-sidenav md-is-locked-open="$mdMedia('gt-md')" class="md- md-whiteframe-4dp" md-component-id="results">
+		<h2>Results:</h2>
+		<md-list>
+			<md-list-item ng-repeat="result in votes">
+				<span>{{result}}</span>
+			</md-list-item>
+		</md-list>
+	</md-sidenav>
+	<md-content  class="" flex>
+		<uib-accordion >
+			<uib-accordion-group ng-repeat="award in awards  track by $index" heading="{{award.Title}}">
+
+				<md-content layout-sm="column" layout="row" layout-wrap>
+					<div is-open="status.open"ng-repeat="nominee in award.VoteItems" flex-sm flex-gt-sm="33" layout="column" >
+						<md-card>
+							<img ng-src="{{nominee.Image.Url}}" class="md-card-image" alt="{{nominee.Image.Alt}}">
+							<md-card-title>
+								<md-card-title-text class="md-primary">
+									<h4>{{nominee.Content1}}</h4>
+								</md-card-title-text>
+							</md-card-title>
+							<md-card-content>
+							</md-card-content>
+							<md-card-actions layout="column" flex>
+								<md-button>Trailer</md-button>
+								<md-button class="md-accent" ng-click="addVote(award.Title, nominee.Content1)">VOTE</md-button>
+							</md-card-actions>
+						</md-card>
+					</div>
+				</md-content>
+			</uib-accordion-group>
+		<uib-accordion>
+	</md-content>
 </div>

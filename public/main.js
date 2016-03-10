@@ -69496,11 +69496,13 @@ require('angular-aria');
 require('angular-animate');
 require('angular-material');
 require('angular-ui-bootstrap');
+require('./components/home/home-service.js');
 require('./components/home/home.js');
 require('./components/about/about.js');
 
 
-var app = angular.module('myApp', ['ui.router','ngMaterial','myAppHome','myAppAbout'])
+
+var app = angular.module('myApp', ['ui.router','ui.bootstrap','ngMaterial','myAppHome','myAppAbout','myHomeService'])
 
 app.config(function($stateProvider, $urlRouterProvider) {
 
@@ -69531,16 +69533,38 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	});
 });
 
-},{"./components/about/about.js":13,"./components/home/home.js":14,"angular":11,"angular-animate":2,"angular-aria":4,"angular-material":6,"angular-ui-bootstrap":8,"angular-ui-router":9}],13:[function(require,module,exports){
+},{"./components/about/about.js":13,"./components/home/home-service.js":14,"./components/home/home.js":15,"angular":11,"angular-animate":2,"angular-aria":4,"angular-material":6,"angular-ui-bootstrap":8,"angular-ui-router":9}],13:[function(require,module,exports){
 angular.module('myAppAbout', [])
 .controller('aboutCtrl',[function(){
 	this.aboutText = 'This is the about component!';
 }]);
 
 },{}],14:[function(require,module,exports){
-angular.module('myAppHome', ['ui.bootstrap'])
-.controller('homeCtrl',[function(){
+angular.module('myHomeService', [])
+.factory('homeDataService',['$http',function($http){
+	return {
+          list: function(callback){
+            $http.get('./assets/data/data.json').success(callback);
+          }
+        };
+}]);
 
+},{}],15:[function(require,module,exports){
+angular.module('myAppHome', ['myHomeService'])
+.controller('homeCtrl',['$scope','$rootScope','homeDataService','$mdSidenav',function($scope,$rootScope,homeDataService,$mdSidenav){
+	homeDataService.list(function(awards){
+		$scope.awards = awards;
+		console.log($scope.awards);
+	});
+	$rootScope.openResults = function(){
+		$mdSidenav('results').toggle();
+	};
+	$scope.votes = [];
+	$scope.addVote = function(title, choice){
+		$scope.votes.push(title +": "+ choice);
+		// console.log(scope.votes);
+		return $scope.votes;
+	};
 }]);
 
 },{}]},{},[12]);
