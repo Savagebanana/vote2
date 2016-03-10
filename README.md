@@ -1,13 +1,4 @@
-# scalable-angularjs-project-setup-gulp-browserify
-This is an angularjs project setup using gulp, node and browserify. This setup is an effort to keep your app more scalable and managable when it grows larger.
+# scalable-angularjs-project-setup---gulp-browserify-browsersync-gulp-sass-gulp-concat
+This is an angularjs app setup using gulp, node and browserify. This setup is an effort to keep your app more scalable and managable when it grows larger. It's a voting app that captures a users vote in each accordion menu and stores it in an votes[] array, and then with to way data binding, displays the users selections in a mobile optmized slide out left nav menu.
 
-Tutorial : http://code.ciphertrick.com/2015/11/23/scalable-angularjs-setup-with-gulp-browserify/
-
-## Quick Start
-Download the code as zip from the right or clone the repository.</br>
-Run `npm install` </br>
-Install gulp globally `npm install gulp -g` </br>
-Run `gulp` </br>
-
-Your project would run in firefox browser (since its configured that way), you can change the browser or add another browser by editing the browser-sync task in gulpfile.js
-
+# My first Anugulas JS app....it's just the beginning.
